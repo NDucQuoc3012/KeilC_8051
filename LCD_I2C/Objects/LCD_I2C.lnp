@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\LCD_I2C.obj",
+".\Objects\Thu_Vien_LCD_I2C.obj" 
+TO ".\Objects\LCD_I2C" 
+PRINT(".\Listings\LCD_I2C.m51") RAMSIZE(256) 

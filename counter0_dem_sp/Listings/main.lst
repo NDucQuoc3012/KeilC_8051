@@ -1,0 +1,89 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              08/23/2023 11:18:45 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "..\library\delay_lib\delay.h"
+   3          
+   4          unsigned char code a[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
+   5          
+   6          void display(unsigned int n)
+   7          {
+   8   1        unsigned char don_vi, chuc, tram, ngan, chuc_ngan;
+   9   1        chuc_ngan = n / 10000;
+  10   1        n = n%10000;
+  11   1        ngan = n / 1000;
+  12   1        n = n%1000;
+  13   1        tram = n / 100;
+  14   1        n = n%100;
+  15   1        chuc = n / 10;
+  16   1        n = n%10;
+  17   1        don_vi = n;
+  18   1        
+  19   1        P0 = a[chuc_ngan];
+  20   1        P2_1 = 0;
+  21   1        delayMs(1);
+  22   1        P2_1 = 1;
+  23   1        
+  24   1        P0 = a[ngan];
+  25   1        P2_2 = 0;
+  26   1        delayMs(1);
+  27   1        P2_2 = 1;
+  28   1        
+  29   1        P0 = a[tram];
+  30   1        P2_3 = 0;
+  31   1        delayMs(1);
+  32   1        P2_3 = 1;
+  33   1        
+  34   1        P0 = a[chuc];
+  35   1        P2_4 = 0;
+  36   1        delayMs(1);
+  37   1        P2_4 = 1;
+  38   1        
+  39   1        P0 = a[don_vi];
+  40   1        P2_5 = 0;
+  41   1        delayMs(1);
+  42   1        P2_5 = 1;
+  43   1        
+  44   1      }
+  45          
+  46          void main()
+  47          {
+  48   1        unsigned int n;
+  49   1        TMOD &= 0xF0;
+  50   1        TMOD |= 0x05;
+  51   1        TR0 = 1;
+  52   1        
+  53   1        while(1)
+  54   1        {
+C51 COMPILER V9.60.0.0   MAIN                                                              08/23/2023 11:18:45 PAGE 2   
+
+  55   2          do{
+  56   3            n = TH0;
+  57   3            n = n << 8;
+  58   3            n = n | TL0;
+  59   3          }while( (n>>8) != TH0);
+  60   2          
+  61   2          display(n);
+  62   2        }
+  63   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    249    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,5 @@
+".\Objects\main.obj",
+".\Objects\uart_mode1.obj" 
+TO ".\Objects\uart_mode1_01" 
+
+PRINT(".\Listings\uart_mode1_01.map")

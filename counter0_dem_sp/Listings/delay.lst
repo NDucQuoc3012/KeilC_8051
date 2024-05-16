@@ -1,0 +1,47 @@
+C51 COMPILER V9.60.0.0   DELAY                                                             08/23/2023 10:57:59 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN .\Objects\delay.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\delay_lib\delay.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+                    - PRINT(.\Listings\delay.lst) TABS(2) OBJECT(.\Objects\delay.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "delay.h"
+   3          
+   4          #if (freq_osc==11059200)
+*** WARNING C322 IN LINE 4 OF ..\library\delay_lib\delay.c: unknown identifier
+                void delayMs(int time)
+                {
+                  int x, y;
+                  for(x=0 ;x<time ;x++)
+                  {
+                    for(y=0 ;y<113 ;y++);
+                  }
+                } 
+              #else (freq_osc==12000000)
+  14            void delayMs(int time)
+  15            {
+  16   1          int x, y;
+  17   1          for(x=0 ;x<time ;x++)
+  18   1          {
+  19   2            for(y=0 ;y<122 ;y++);
+  20   2          }
+  21   1        }
+*** WARNING C316 IN LINE 21 OF ..\library\delay_lib\delay.c: unterminated conditionals
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     38    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

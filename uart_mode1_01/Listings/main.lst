@@ -1,0 +1,51 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/24/2024 02:31:12 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OMF2 OPTIMIZE(8,SPEED) BROWSE DEBUG PRINT(.\Listings\main.lst) TA
+                    -BS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "..\library\uart_mode1_lib\uart_mode1.h"
+   3          #define freq_ocs 11059200
+   4          
+   5          
+   6          
+   7          void main ()
+   8          {
+   9   1        unsigned char a;
+  10   1        
+  11   1        uart_init();
+  12   1        
+  13   1        while(1)
+  14   1        {
+  15   2          uart_write_text("nhap vao chu cai in thuong: ");
+  16   2          while(RI == 0);
+  17   2          a = uart_read();
+  18   2          a = a-32;
+  19   2          uart_write_text("->");
+  20   2          uart_write(a);
+  21   2          uart_write('\r');
+  22   2        }
+  23   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     47    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
